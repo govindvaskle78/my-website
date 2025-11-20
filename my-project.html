@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Online Editor Project</title>
+    <style>
+/* RESET */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Inter', sans-serif;
+  background:#0f172a;
+  color:white;
+  line-height:1.6;
+  padding:20px;
+}
+
+/* HEADER */
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:#1e293b;
+  padding:15px 20px;
+  border-radius:12px;
+  position:sticky;
+  top:10px;
+}
+
+.logo{
+  font-size:24px;
+  font-weight:700;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  margin:0 10px;
+  font-weight:600;
+}
+nav a:hover{
+  color:#38bdf8;
+}
+
+/* THEME BUTTON */
+#themeBtn{
+  font-size:20px;
+  padding:8px 12px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  background:#334155;
+}
+
+/* HERO SECTION */
+#hero{
+  text-align:center;
+  margin:60px 0;
+}
+#hero h2{
+  font-size:36px;
+}
+.cta-btn{
+  padding:12px 20px;
+  margin-top:15px;
+  background:#38bdf8;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:16px;
+  color:black;
+}
+
+/* ABOUT */
+#about, #projects, #contact{
+  margin-top:50px;
+}
+
+/* PROJECT GRID */
+.project-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(200px,1fr));
+  gap:20px;
+  margin-top:20px;
+}
+.card{
+  padding:30px;
+  background:#1e293b;
+  border-radius:12px;
+  text-align:center;
+  font-size:20px;
+}
+
+/* CONTACT FORM */
+form{
+  display:grid;
+  gap:12px;
+  margin-top:20px;
+}
+input, textarea{
+  padding:12px;
+  border:none;
+  border-radius:8px;
+}
+button{
+  padding:12px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+}
+#successMsg{
+  margin-top:10px;
+  color:#4ade80;
+  font-weight:600;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  margin-top:40px;
+  padding:20px;
+  color:#94a3b8;
+}
+
+    </style>
+</head>
+<body>
+
+
+
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1 class="logo">Stellar</h1>
+
+    <nav>
+      <a href="#hero">Home</a>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <button id="themeBtn">🌗</button>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero">
+    <h2>Build Beautiful & Modern Websites</h2>
+    <p>We create clean, responsive and fast websites using HTML, CSS and JavaScript.</p>
+    <button class="cta-btn">Get Started</button>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <h2>Why Choose Us?</h2>
+    <p>We focus on clean UI, fast performance and modern animations.</p>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <h2>Our Recent Work</h2>
+
+    <div class="project-grid">
+      <div class="card">Project 1</div>
+      <div class="card">Project 2</div>
+      <div class="card">Project 3</div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+
+    <form id="contactForm">
+      <input type="text" id="name" placeholder="Your Name" required>
+      <input type="email" id="email" placeholder="Your Email" required>
+      <textarea id="message" placeholder="Your Message" required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+
+    <p id="successMsg"></p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Stellar Web Studio</p>
+  </footer>
+
+<script src="main.js"></script>
+
+
+
+    <script>
+// JavaScript Code
+function changeColor() {
+    const colors = [
+        'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+        'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+        'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+        'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
+        'linear-gradient(135deg, #fa709a 0%, #fee140 100%)'
+    ];
+    
+    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+    const container = document.querySelector('.container');
+    container.style.background = randomColor;
+    
+    console.log('Color changed to:', randomColor);
+}
+
+// Add some interactive features
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('HTML Online Editor loaded successfully!');
+    
+    // Add animation on load
+    const container = document.querySelector('.container');
+    if (container) {
+        container.style.opacity = '0';
+        container.style.transform = 'translateY(20px)';
+        
+        setTimeout(() => {
+            container.style.transition = 'all 0.6s ease';
+            container.style.opacity = '1';
+            container.style.transform = 'translateY(0)';
+        }, 100);
+    }
+});
+
+
+
+
+
+// THEME TOGGLE
+const themeBtn = document.getElementById('themeBtn');
+
+themeBtn.addEventListener('click', () => {
+  document.body.classList.toggle('light');
+
+  if(document.body.classList.contains('light')){
+    themeBtn.innerText = "🌞";
+    document.body.style.background = "#f1f5f9";
+    document.body.style.color = "#0f172a";
+  } else {
+    themeBtn.innerText = "🌗";
+    document.body.style.background = "#0f172a";
+    document.body.style.color = "white";
+  }
+});
+
+// CONTACT FORM
+const form = document.getElementById('contactForm');
+const successMsg = document.getElementById('successMsg');
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const message = document.getElementById('message').value.trim();
+
+  if(name.length < 2){
+    successMsg.innerText = "Please enter a valid name!";
+    successMsg.style.color = "red";
+    return;
+  }
+
+  if(!email.includes("@")){
+    successMsg.innerText = "Invalid email!";
+    successMsg.style.color = "red";
+    return;
+  }
+
+  if(message.length < 10){
+    successMsg.innerText = "Message must be 10+ characters!";
+    successMsg.style.color = "red";
+    return;
+  }
+
+  successMsg.innerText = "Message sent successfully!";
+  successMsg.style.color = "#4ade80";
+
+  form.reset();
+});
+
+    </script>
+</body>
+</html>
